@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/front}">
+<head><title layout:fragment="title">Home</title></head>
+<body>
+    <main layout:fragment="content">
+        <div class="row align-items-center">
+            <div class="col">
+                <div class="d-flex align-items-center">
+                    <div class="g-title">
+                        <h4 class="colored">KainoVaii</h4>
+                        <p class="mb-25">Développeur passionné, spécialisé en Java et PHP, <br> toujours en quête de nouveaux défis technologiques.</p>
+                        <br>
+                        <a href="index.html#" class="g-link slide-vertical" data-splitting>En savoir plus ?</a>
+                    </div>
+                </div>
+                <div class="social-links d-block d-lg-none mt-30">
+                    <a href="index.html#" class="slide-horizontal" data-splitting>Facebook</a>
+                    <a href="index.html#" class="slide-horizontal" data-splitting>Twitter</a>
+                    <a href="index.html#" class="slide-horizontal" data-splitting>Dribbble</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12 d-none d-lg-block">
+                <div class="standard-text-holder">
+                    <h5 class="mb-25">Disponible ici</h5>
+                    <p class="mb-1"><a href="mailto:hello@grit.com" class="slide-vertical colored" data-splitting>kainodev@proton.me</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="page-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="section-heading" style="color:#33d06c"><span>1/</span>Repo</h2>
+                            <div class="experience-info">
+                                <repo-card x-data="{
+                                    name: 'MineVote',
+                                    about: 'Minecraft voting plugin (Votifier) with custom rewards, For Paper/Spigot servers.',
+                                    techno: 'Java',
+                                    repo: 'kainovaii/minevote',
+                                    url: 'https://github.com/kainovaii/minevote'
+                                }">
+                                </repo-card>
+                                <repo-card x-data="{
+                                    name: 'Obsidian PHP',
+                                    about: 'Obsidian Skeleton is a minimal PHP framework starter with MVC structure, routing, middleware, and Composer support for fast and maintainable web app development.',
+                                    techno: 'Java',
+                                    repo: 'Obsidian-PHP/skeleton',
+                                    url: 'https://github.com/Obsidian-PHP/skeleton'
+                                }">
+                                </repo-card>
+                                <repo-card x-data="{
+                                    name: 'BlogSpring',
+                                    about: 'Blog in Java Spring using SQLite',
+                                    techno: 'PHP',
+                                    repo: 'kainovaii/blogspring',
+                                    url: 'https://github.com/kainovaii/blogspring'
+                                }">
+                                </repo-card>
+                                <repo-card x-data="{
+                                    name: 'DashBot',
+                                    about: 'Discord for my network monitoring, using Uptime Kuma',
+                                    techno: 'Java',
+                                    repo: 'kainovaii/dashbot',
+                                    url: 'https://github.com/kainovaii/dashbot'
+                                }">
+                                </repo-card>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="divider"></div>
+                        </div>
+
+                        <!--
+
+                        <div class="col-lg-5 col-md-12">
+                            <h2 class="section-heading"><span>2/</span>Education</h2>
+                            <div class="education-info">
+                                <education-card></education-card>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-12 mt-90 mt-lg-0">
+                            <h2 class="section-heading" style="color:#6e80e3"><span>3/</span>My Skills</h2>
+                            <div class="skills">
+                                <skill-card></skill-card>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="divider"></div>
+                        </div>
+
+                        -->
+
+                        <div class="col-md-12">
+                            <h2 class="section-heading" style="color:#f2c44c"><span>4/</span>Interests</h2>
+                            <div class="interestes">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="interests-item">
+                                            <span class="lni-camera"></span>
+                                            <p>Code</p>
+                                        </div>
+                                        <!-- /interests-item -->
+                                    </div>
+                                    <div class="col">
+                                        <div class="interests-item">
+                                            <span class="lni-music"></span>
+                                            <p>Music</p>
+                                        </div>
+                                        <!-- /interests-item -->
+                                    </div>
+                                    <div class="col">
+                                        <div class="interests-item">
+                                            <span class="lni-game"></span>
+                                            <p>Gaming</p>
+                                        </div>
+                                        <!-- /interests-item -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /interestes -->
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="divider"></div>
+                            <!-- /divider -->
+                        </div>
+
+                        <div class="col-md-12" style="margin-bottom: 80px;">
+                            <footer>
+                                <div class="footer-top text-center">
+                                    <h2>kainodev@proton.me</h2>
+                                    <p>Copyright KainoVaii 2025
+                                </div>
+                                <!-- /footer-top -->
+                            </footer>
+                        </div>
+                    </div>
+                    <!-- /row -->
+                </div>
+                <!-- /page-content -->
+            </div>
+        </div>
+    </main>
+</body>
+</html>

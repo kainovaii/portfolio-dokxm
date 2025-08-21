@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KainoVaii</title>
+    <link href="/assets/img/favicon.svg" type="image/svg" rel="icon">
+    <link href="/assets/css/plugins.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/main.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/responsive.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/component-manager.js"></script>
+    <script defer src="/assets/js/alpine.js"></script>
+    <script defer src="/assets/js/register-component.js"></script>
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="scroll-static"></div>
+    </div>
+    <header>
+        <div class="container">
+            <div class="row no-gutters align-items-center">
+                <div class="col-sm col-9">
+                    <img class="user-image" src="https://avatars.githubusercontent.com/u/52110617?v=4" alt="">
+                    <a class='logo slide-horizontal' data-splitting href="/">KainoVaii</a>
+                </div>
+                <div class="col-sm col-3 text-lg-right">
+                    <div class="social-icons d-none d-lg-inline-block">
+                        <a href="https://github.com/kainovaii">Github</a>
+                    </div>
+                    <div class="header-nav-toggler d-lg-none">
+                        <div class="menu-btn">
+                            <div class="line-menu half start"></div>
+                            <div class="line-menu"></div>
+                            <div class="line-menu half end"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="section-standard">
+        <div class="container" layout:fragment="content">
+            <h1 class="h3 mb-4 text-gray-800">content-default</h1>
+        </div>
+    </div>
+
+    <script src="/assets/js/jquery-v1.12.4.min.js"></script>
+    <script src="/assets/js/plugins.js"></script>
+    <script src="/assets/js/main.js"></script>
+</body>
+
+</html>
