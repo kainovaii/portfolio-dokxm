@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/front}">
+<head><title layout:fragment="title">Articles</title></head>
+<body>
+    <main layout:fragment="content">
+        <section class="container-xl">
+            <div class="row mt-5">
+                <div th:each="post : ${posts}" class="col-md-4">
+                    <div class="card">
+                        <div class="img-responsive img-responsive-16x9 card-img-top"
+                             th:if="${post.thumbnail != null and !#strings.isEmpty(post.thumbnail)}"
+                             th:style="'background-image: url(' + @{/uploads/{file}(file=${post.thumbnail})} + ')'"
+                             th:title="${post.title}">
+                        </div>
+                        <div class="img-responsive img-responsive-16x9 card-img-top"
+                             th:unless="${post.thumbnail != null and !#strings.isEmpty(post.thumbnail)}"
+                             style="background-image: url('https://placehold.co/600x400/EEE/31343C')"
+                             th:title="${post.title}">
+                        </div>
+                        <div class="card-body">
+                            <h3  th:text="${post.title}" class="card-title">default-content</h3>
+                            <a th:href="@{/posts/{slug}(slug=${post.slug})}" class="text-indigo-600 font-medium hover:underline">Lire la suite →</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

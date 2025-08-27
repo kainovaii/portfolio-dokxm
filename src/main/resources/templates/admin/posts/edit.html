@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/admin}">
+<body>
+    <div layout:fragment="content">
+        <div class="col-md-12">
+            <div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show" role="alert">
+                <span th:text="${successMessage}"></span>
+            </div>
+        </div>
+        <div class="page-header d-print-none m-0 p-0" aria-label="Page header">
+            <div class="container-xl">
+                <div class="row g-2 align-items-center">
+                    <div class="col">
+                        <div class="page-pretitle">Posts</div>
+                        <h2 class="page-title"><span th:text="${post.title}"></span></h2>
+                    </div>
+                    <div class="col-auto ms-auto d-print-none">
+                        <div class="btn-list">
+                            <span class="d-none d-sm-inline">
+                                <a th:href="@{/posts/{slug}(slug=${post.slug})}" class="btn btn-1">View</a>
+                                <a th:href="@{/admin/posts/delete/{id}(id=${post.id})}" class="btn btn-danger">Delete</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-3">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" data-bs-toggle="tabs">
+                    <li class="nav-item">
+                        <a href="#tabs-home-1" class="nav-link active" data-bs-toggle="tab">Editor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#tabs-profile-1" class="nav-link" data-bs-toggle="tab">See post</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content">
+                    <div class="tab-pane active show" id="tabs-home-1">
+                        <form class="row" th:action="@{/admin/posts/edit}" method="post" enctype="multipart/form-data">
+                            <input type="hidden" th:name="id" th:value="${post.id}" />
+                            <div class="col-md-12 mb-2">
+                                <div class="form-group">
+                                    <label for="title">Title :</label><br>
+                                    <input class="form-control" type="text" id="title" name="title" th:value="${post.title}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-2">
+                                <div class="form-group">
+                                    <label for="content-editor">Content :</label><br>
+                                    <textarea class="form-control" id="content-editor" name="content" rows="10" cols="50" th:text="${post.content}"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <div class="form-group">
+                                    <label for="cover">Cover Image :</label><br>
+                                    <input class="form-control pb-1" type="file" id="cover" name="thumbnail">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <div class="form-group">
+                                    <label for="status">Status :</label>
+                                    <select class="form-control" id="status" name="status" th:field="*{post.status}">
+                                        <option value="0">Inactive</option>
+                                        <option value="1">Active</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" type="submit">Save</button>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="tabs-profile-1">
+                        <figure class="mb-5">
+                            <img class="rounded" style="box-sizing: content-box; width: 100%;" th:src="@{'/uploads/' + ${post.thumbnail}}" alt="" />
+                        </figure>
+                        <main th:utext="${post.content}"></main>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

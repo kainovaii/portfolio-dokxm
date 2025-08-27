@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" layout:decorate="~{layout/front}">
+<head><title layout:fragment="title">Articles</title></head>
+<body>
+    <main layout:fragment="content">
+        <div class="container-xl pt-2">
+            <div sec:authorize="hasAnyRole('ADMIN', 'EDITOR')" class="card mb-3 mt-2">
+                <div class="p-2">
+                    <ul class="pagination">
+                        <li class="page-item" sec:authorize="hasAnyRole('ADMIN', 'EDITOR')" th:if="${webAccess.isRouteMatch('/posts')}">
+                            <a class="page-link" th:href="@{/admin/posts/new}">New post</a>
+                        </li>
+                        <li class="page-item" sec:authorize="hasAnyRole('ADMIN', 'EDITOR')" th:if="${webAccess.isRouteMatch('/posts/:slug')}">
+                            <a class="page-link" th:href="@{/admin/posts/edit/{id}(id=${post.id})}">Edit post</a>
+                        </li>
+                        <li class="page-item" sec:authorize="hasAnyRole('ADMIN', 'EDITOR')" th:if="${webAccess.isRouteMatch('/posts/:slug')}">
+                            <a class="page-link" th:href="@{/admin/posts/delete/{id}(id=${post.id})}">Delete post</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row g-2 align-items-center">
+                            <div class="col-auto">
+                                <span class="avatar avatar-lg" style="background-image: url(./static/avatars/000m.jpg)"> </span>
+                            </div>
+                            <div class="col">
+                                <h4 class="card-title m-0">
+                                    <a href="#"><span th:text="${authorUsername}">default-content</span></a>
+                                </h4>
+                                <div class="text-secondary"><span th:text="${authorRole}">default-content</span></div>
+                            </div>
+                            <div class="col-auto">
+                                <a href="#" class="btn"> Subscribe </a>
+                            </div>
+                            <div class="col-auto">
+                                <div class="dropdown">
+                                    <a href="#" class="btn-action" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+                                            <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                                            <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                                            <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                                        </svg>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a href="#" class="dropdown-item">Import</a>
+                                        <a href="#" class="dropdown-item">Export</a>
+                                        <a href="#" class="dropdown-item">Download</a>
+                                        <a href="#" class="dropdown-item text-danger">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2">
+                <img class="rounded w-full" th:src="@{'/uploads/' + ${post.thumbnail}}" alt="" />
+                <main th:utext="${post.content}">default-content</main>
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>

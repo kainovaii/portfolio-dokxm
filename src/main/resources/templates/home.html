@@ -2,146 +2,235 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/front}">
 <head><title layout:fragment="title">Home</title></head>
 <body>
-    <main layout:fragment="content">
-        <div class="row align-items-center">
-            <div class="col">
-                <div class="d-flex align-items-center">
-                    <div class="g-title">
-                        <h4 class="colored">KainoVaii</h4>
-                        <p class="mb-25">Développeur passionné, spécialisé en Java et PHP, <br> toujours en quête de nouveaux défis technologiques.</p>
-                        <br>
-                        <a href="index.html#" class="g-link slide-vertical" data-splitting>En savoir plus ?</a>
+<main layout:fragment="content">
+    <section id="top" class="relative">
+        <div class="min-h-screen flex flex-col justify-center items-center pt-20 relative z-10">
+            <div class="absolute inset-0">
+                <img th:src="@{/images/hero-primary.jpg}"
+                     alt="Hero Background"
+                     class="w-full h-full object-cover opacity-60">
+                <div class="absolute inset-0 bg-black opacity-85"></div>
+            </div>
+            <div class="text-center max-w-7xl px-6 animate-on-scroll">
+                <h1 class="text-6xl md:text-8xl font-bold mb-6 leading-tight"> Théo <span class="text-gradient">Jary</span></h1>
+                <p class="text-2xl md:text-3xl text-text-gray mb-8 font-light">Monteur Vidéo & Créateur de Contenu</p>
+                <p class="text-lg text-text-gray max-w-2xl mx-auto mb-12 leading-relaxed">
+                    Passionné par la création audiovisuelle, je transforme vos idées en histoires captivantes
+                    à travers le montage, les effets visuels et la narration cinématographique.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center z-[100]">
+                    <a href="#showreel" class="bg-gradient-to-r from-accent-orange to-accent-yellow text-dark px-8 py-4 rounded-lg font-semibold text-lg hover:scale-105 transition-all duration-300 animate-glow">
+                        Voir mon Showreel
+                    </a>
+                    <a th:href="@{/projects}" class="border-2 border-accent-orange text-accent-orange px-8 py-4 rounded-lg font-semibold text-lg hover:bg-accent-orange hover:text-dark transition-all duration-300">
+                        Découvrir mes projets
+                    </a>
+                </div>
+                <br><br><br><br>
+                <br><br><br><br>
+            </div>
+        </div>
+        <svg class="absolute bottom-0 left-0 w-full mt-10 z-[50]" style="pointer-events: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#111827" fill-opacity="1" d="M0,192L60,202.7C120,213,240,235,360,245.3C480,256,600,256,720,234.7C840,213,960,171,1080,170.7C1200,171,1320,213,1380,234.7L1440,256L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+        </svg>
+    </section>
+    <section id="showreel" class="py-24 bg-dark-secondary">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-5xl font-bold mb-4">Showreel</h2>
+                <p class="text-xl text-text-gray max-w-2xl mx-auto">
+                    Une sélection de mes meilleurs travaux en 2024
+                </p>
+            </div>
+            <div class="max-w-4xl mx-auto animate-on-scroll">
+                <div class="video-card" x-data="videoPlayer()">
+                    <div class="relative">
+                        <video
+                                x-ref="video"
+                                @click="togglePlay"
+                                class="w-full rounded-lg"
+                                poster="https://placehold.co/896x504/286CAF/FFF?text=Showreel"
+                        >
+                            <source src="https://2050today.org/wp-content/uploads/2020/07/Video-Placeholder.mp4?_=6" type="video/mp4">
+                        </video>
+                        <div
+                                class="play-button relative z-10"
+                                :class="{'opacity-0 pointer-events-none': isPlaying, 'opacity-100 pointer-events-auto': !isPlaying}"
+                                @click.stop="play"
+                        >
+                            <div class="play-icon"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="social-links d-block d-lg-none mt-30">
-                    <a href="index.html#" class="slide-horizontal" data-splitting>Facebook</a>
-                    <a href="index.html#" class="slide-horizontal" data-splitting>Twitter</a>
-                    <a href="index.html#" class="slide-horizontal" data-splitting>Dribbble</a>
-                </div>
+
             </div>
-            <div class="col-lg-3 col-md-12 d-none d-lg-block">
-                <div class="standard-text-holder">
-                    <h5 class="mb-25">Disponible ici</h5>
-                    <p class="mb-1"><a href="mailto:hello@grit.com" class="slide-vertical colored" data-splitting>kainodev@proton.me</a></p>
+        </div>
+    </section>
+    <section id="service" class="py-24 bg-dark-secondary">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-5xl font-bold mb-4">Services</h2>
+                <p class="text-xl text-text-gray max-w-2xl mx-auto">
+                    Des solutions complètes pour tous vos besoins audiovisuels
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-dark-secondary rounded-2xl p-8 text-center hover:bg-dark-card transition-all duration-300 animate-on-scroll">
+                    <div class="w-16 h-16 bg-gradient-to-r from-accent-orange to-accent-yellow rounded-xl flex items-center justify-center text-2xl mx-auto mb-6">
+                        ✂️
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Montage Vidéo</h3>
+                    <p class="text-text-gray leading-relaxed">
+                        Montage professionnel pour tous types de contenus : clips, courts-métrages, publicités, vlogs.
+                    </p>
+                </div>
+
+                <div class="bg-dark-secondary rounded-2xl p-8 text-center hover:bg-dark-card transition-all duration-300 animate-on-scroll">
+                    <div class="w-16 h-16 bg-gradient-to-r from-accent-orange to-accent-yellow rounded-xl flex items-center justify-center text-2xl mx-auto mb-6">
+                        🎨
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Effets Visuels</h3>
+                    <p class="text-text-gray leading-relaxed">
+                        Création d'effets visuels sur-mesure, motion graphics et animations pour sublimer vos projets.
+                    </p>
+                </div>
+
+                <div class="bg-dark-secondary rounded-2xl p-8 text-center hover:bg-dark-card transition-all duration-300 animate-on-scroll">
+                    <div class="w-16 h-16 bg-gradient-to-r from-accent-orange to-accent-yellow rounded-xl flex items-center justify-center text-2xl mx-auto mb-6">
+                        🎵
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Post-Production Audio</h3>
+                    <p class="text-text-gray leading-relaxed">
+                        Mixage audio, sound design et synchronisation pour une expérience sonore immersive.
+                    </p>
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-12">
-                <div class="page-content">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2 class="section-heading" style="color:#33d06c"><span>1/</span>Repo</h2>
-                            <div class="experience-info">
-                                <repo-card x-data="{
-                                    name: 'MineVote',
-                                    about: 'Minecraft voting plugin (Votifier) with custom rewards, For Paper/Spigot servers.',
-                                    techno: 'Java',
-                                    repo: 'kainovaii/minevote',
-                                    url: 'https://github.com/kainovaii/minevote'
-                                }">
-                                </repo-card>
-                                <repo-card x-data="{
-                                    name: 'Obsidian PHP',
-                                    about: 'Obsidian Skeleton is a minimal PHP framework starter with MVC structure, routing, middleware, and Composer support for fast and maintainable web app development.',
-                                    techno: 'Java',
-                                    repo: 'Obsidian-PHP/skeleton',
-                                    url: 'https://github.com/Obsidian-PHP/skeleton'
-                                }">
-                                </repo-card>
-                                <repo-card x-data="{
-                                    name: 'BlogSpring',
-                                    about: 'Blog in Java Spring using SQLite',
-                                    techno: 'PHP',
-                                    repo: 'kainovaii/blogspring',
-                                    url: 'https://github.com/kainovaii/blogspring'
-                                }">
-                                </repo-card>
-                                <repo-card x-data="{
-                                    name: 'DashBot',
-                                    about: 'Discord for my network monitoring, using Uptime Kuma',
-                                    techno: 'Java',
-                                    repo: 'kainovaii/dashbot',
-                                    url: 'https://github.com/kainovaii/dashbot'
-                                }">
-                                </repo-card>
-                            </div>
+    </section>
+    <section id="about" class="py-24 bg-dark-secondary">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="animate-on-scroll">
+                    <h2 class="text-5xl font-bold mb-6">À propos</h2>
+                    <p class="text-lg text-text-gray mb-6 leading-relaxed">
+                        Avec plus de 5 ans d'expérience dans le montage vidéo, je me spécialise dans la création
+                        de contenus visuels percutants qui captivent et engagent les audiences.
+                    </p>
+                    <p class="text-lg text-text-gray mb-8 leading-relaxed">
+                        De la conception à la post-production, j'accompagne mes clients dans la réalisation
+                        de leurs projets audiovisuels les plus ambitieux, alliant créativité technique et
+                        sensibilité artistique.
+                    </p>
+                    <div class="grid grid-cols-2 gap-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-gradient mb-2">150+</div>
+                            <div class="text-text-gray">Projets réalisés</div>
                         </div>
-
-                        <div class="col-md-12">
-                            <div class="divider"></div>
-                        </div>
-
-                        <!--
-
-                        <div class="col-lg-5 col-md-12">
-                            <h2 class="section-heading"><span>2/</span>Education</h2>
-                            <div class="education-info">
-                                <education-card></education-card>
-                            </div>
-                        </div>
-                        <div class="col-lg-7 col-md-12 mt-90 mt-lg-0">
-                            <h2 class="section-heading" style="color:#6e80e3"><span>3/</span>My Skills</h2>
-                            <div class="skills">
-                                <skill-card></skill-card>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="divider"></div>
-                        </div>
-
-                        -->
-
-                        <div class="col-md-12">
-                            <h2 class="section-heading" style="color:#f2c44c"><span>4/</span>Interests</h2>
-                            <div class="interestes">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="interests-item">
-                                            <span class="lni-camera"></span>
-                                            <p>Code</p>
-                                        </div>
-                                        <!-- /interests-item -->
-                                    </div>
-                                    <div class="col">
-                                        <div class="interests-item">
-                                            <span class="lni-music"></span>
-                                            <p>Music</p>
-                                        </div>
-                                        <!-- /interests-item -->
-                                    </div>
-                                    <div class="col">
-                                        <div class="interests-item">
-                                            <span class="lni-game"></span>
-                                            <p>Gaming</p>
-                                        </div>
-                                        <!-- /interests-item -->
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /interestes -->
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="divider"></div>
-                            <!-- /divider -->
-                        </div>
-
-                        <div class="col-md-12" style="margin-bottom: 80px;">
-                            <footer>
-                                <div class="footer-top text-center">
-                                    <h2>kainodev@proton.me</h2>
-                                    <p>Copyright KainoVaii 2025
-                                </div>
-                                <!-- /footer-top -->
-                            </footer>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-gradient mb-2">50+</div>
+                            <div class="text-text-gray">Clients satisfaits</div>
                         </div>
                     </div>
-                    <!-- /row -->
                 </div>
-                <!-- /page-content -->
+
+                <div class="animate-on-scroll">
+                    <div class="bg-dark-card rounded-2xl p-8">
+                        <h3 class="text-2xl font-semibold mb-8 text-center">Compétences</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Adobe Premiere Pro</span>
+                                    <span class="text-text-gray">95%</span>
+                                </div>
+                                <div class="w-full bg-dark h-2 rounded-full">
+                                    <div class="bg-gradient-to-r from-accent-orange to-accent-yellow h-2 rounded-full skill-bar" style="width: 95%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">After Effects</span>
+                                    <span class="text-text-gray">88%</span>
+                                </div>
+                                <div class="w-full bg-dark h-2 rounded-full">
+                                    <div class="bg-gradient-to-r from-accent-orange to-accent-yellow h-2 rounded-full skill-bar" style="width: 88%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">DaVinci Resolve</span>
+                                    <span class="text-text-gray">85%</span>
+                                </div>
+                                <div class="w-full bg-dark h-2 rounded-full">
+                                    <div class="bg-gradient-to-r from-accent-orange to-accent-yellow h-2 rounded-full skill-bar" style="width: 85%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Cinema 4D</span>
+                                    <span class="text-text-gray">75%</span>
+                                </div>
+                                <div class="w-full bg-dark h-2 rounded-full">
+                                    <div class="bg-gradient-to-r from-accent-orange to-accent-yellow h-2 rounded-full skill-bar" style="width: 75%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Sound Design</span>
+                                    <span class="text-text-gray">80%</span>
+                                </div>
+                                <div class="w-full bg-dark h-2 rounded-full">
+                                    <div class="bg-gradient-to-r from-accent-orange to-accent-yellow h-2 rounded-full skill-bar" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </main>
+    </section>
+    <section id="contact" class="py-24 bg-dark-secondary">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="animate-on-scroll">
+                <h2 class="text-5xl font-bold mb-6">Collaborons Ensemble</h2>
+                <p class="text-xl text-text-gray mb-12 max-w-2xl mx-auto">
+                    Vous avez un projet vidéo en tête ? Discutons-en et donnons vie à votre vision créative.
+                </p>
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div class="bg-dark-card rounded-xl p-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-accent-orange to-accent-yellow rounded-xl flex items-center justify-center text-xl mx-auto mb-4">
+                            📧
+                        </div>
+                        <h3 class="font-semibold mb-2">Email</h3>
+                        <a href="mailto:dokxym@gmail.com" class="text-accent-orange hover:underline">dokxym@gmail.com</a>
+                    </div>
+
+                    <div class="bg-dark-card rounded-xl p-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-accent-orange to-accent-yellow rounded-xl flex items-center justify-center text-xl mx-auto mb-4">
+                            𝕏
+                        </div>
+                        <h3 class="font-semibold mb-2">X/Twitter</h3>
+                        <a href="https://x.com/dokxym" target="_blank" class="text-accent-orange hover:underline">@dokxym</a>
+                    </div>
+
+                    <div class="bg-dark-card rounded-xl p-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-accent-orange to-accent-yellow rounded-xl flex items-center justify-center text-xl mx-auto mb-4">
+                            🎬
+                        </div>
+                        <h3 class="font-semibold mb-2">Instagram</h3>
+                        <a href="https://instagram.com/dokxym" target="_blank" class="text-accent-orange hover:underline">@dokxym</a>
+                    </div>
+                </div>
+                <a href="mailto:dokxym@gmail.com" class="inline-block bg-gradient-to-r from-accent-orange to-accent-yellow text-dark px-12 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-all duration-300 animate-glow">
+                    Démarrer un projet
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
 </body>
 </html>

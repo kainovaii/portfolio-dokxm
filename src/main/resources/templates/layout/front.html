@@ -1,55 +1,56 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!DOCTYPE html >
+<html lang="fr" class="scroll-smooth" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>KainoVaii</title>
-    <link href="/assets/img/favicon.svg" type="image/svg" rel="icon">
-    <link href="/assets/css/plugins.css" rel="stylesheet" type="text/css">
-    <link href="/assets/css/main.css" rel="stylesheet" type="text/css">
-    <link href="/assets/css/responsive.css" rel="stylesheet" type="text/css">
-    <script src="/assets/js/component-manager.js"></script>
-    <script defer src="/assets/js/alpine.js"></script>
-    <script defer src="/assets/js/register-component.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Théo JARY</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --color-dark: [[${colors.dark}]];
+            --color-dark-secondary: [[${colors['dark-secondary']}]];
+            --color-dark-card: [[${colors['dark-card']}]];
+            --color-accent-orange: [[${colors['accent-orange']}]];
+            --color-accent-yellow: [[${colors['accent-yellow']}]];
+            --color-text-gray: [[${colors['text-gray']}]];
+        }
+    </style>
+    <script src="/assets/js/tailwind-config.js"></script>
 </head>
-
-<body>
-    <div id="preloader">
-        <div class="scroll-static"></div>
-    </div>
-    <header>
-        <div class="container">
-            <div class="row no-gutters align-items-center">
-                <div class="col-sm col-9">
-                    <img class="user-image" src="https://avatars.githubusercontent.com/u/52110617?v=4" alt="">
-                    <a class='logo slide-horizontal' data-splitting href="/">KainoVaii</a>
-                </div>
-                <div class="col-sm col-3 text-lg-right">
-                    <div class="social-icons d-none d-lg-inline-block">
-                        <a href="https://github.com/kainovaii">Github</a>
-                    </div>
-                    <div class="header-nav-toggler d-lg-none">
-                        <div class="menu-btn">
-                            <div class="line-menu half start"></div>
-                            <div class="line-menu"></div>
-                            <div class="line-menu half end"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<body class="font-inter bg-dark text-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-dark/90 backdrop-blur-xl border-b border-gray-800 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
+            <div class="text-2xl font-bold text-gradient">TJ</div>
+            <ul class="hidden md:flex space-x-8">
+                <li><a th:href="@{/#top}" class="text-text-gray hover:text-accent-orange transition-colors">Accueil</a></li>
+                <li><a th:href="@{/projects}" class="text-text-gray hover:text-accent-orange transition-colors">Projets</a></li>
+                <li><a th:href="@{/#showreel}" class="text-text-gray hover:text-accent-orange transition-colors">Showreel</a></li>
+                <li><a th:href="@{/#service}" class="text-text-gray hover:text-accent-orange transition-colors">Service</a></li>
+                <li><a th:href="@{/#contact}" class="text-text-gray hover:text-accent-orange transition-colors">Contact</a></li>
+            </ul>
+            <button class="md:hidden text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
         </div>
-    </header>
+    </nav>
 
-    <div class="section-standard">
-        <div class="container" layout:fragment="content">
-            <h1 class="h3 mb-4 text-gray-800">content-default</h1>
-        </div>
+    <div layout:fragment="content">
+        <div id="gjs" style="height:600px; border:2px solid #444;"></div>
     </div>
 
-    <script src="/assets/js/jquery-v1.12.4.min.js"></script>
-    <script src="/assets/js/plugins.js"></script>
+    <!-- Footer -->
+    <footer class="py-8 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="text-text-gray">&copy; 2025 Théo Jary. Créé part <a href="https://github.com/kainovaii" class="text-accent-orange hover:underline" target="_blank">KainoVaii</a> avec passion ❤️</p>
+        </div>
+    </footer>
     <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/player.js"></script>
 </body>
-
 </html>
