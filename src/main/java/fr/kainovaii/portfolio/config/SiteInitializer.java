@@ -38,11 +38,11 @@ public class SiteInitializer
 
                 Color darkSecondary = new Color();
                 darkSecondary.setName("dark-secondary");
-                darkSecondary.setValue("#1a1a1a");
+                darkSecondary.setValue("#111827");
 
                 Color darkCard = new Color();
                 darkCard.setName("dark-card");
-                darkCard.setValue("#222222");
+                darkCard.setValue("#1F2937");
 
                 Color accentOrange = new Color();
                 accentOrange.setName("accent-orange");

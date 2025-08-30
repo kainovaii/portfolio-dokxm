@@ -1,0 +1,32 @@
+name: "Projects"
+components:
+  projects:
+    status: enable
+    type: "row_video"
+    title: "Mes Projets"
+    subtitle: "Des clips musicaux aux courts-métrages, découvrez ma diversité créative"
+    videos:
+      1:
+        url: "https://2050today.org/wp-content/uploads/2020/07/Video-Placeholder.mp4?_=6"
+        poster: "https://placehold.co/896x504/286CAF/FFF?text=Showreel"
+      2:
+        url: "https://2050today.org/wp-content/uploads/2020/07/Video-Placeholder.mp4?_=6"
+        poster: "https://placehold.co/896x504/286CAF/FFF?text=Showreel"
+      3:
+        url: "https://2050today.org/wp-content/uploads/2020/07/Video-Placeholder.mp4?_=6"
+        poster: "https://placehold.co/896x504/286CAF/FFF?text=Showreel"
+      4:
+        url: "https://2050today.org/wp-content/uploads/2020/07/Video-Placeholder.mp4?_=6"
+        poster: "https://placehold.co/896x504/286CAF/FFF?text=Showreel"
+      5:
+        url: "https://2050today.org/wp-content/uploads/2020/07/Video-Placeholder.mp4?_=6"
+        poster: "https://placehold.co/896x504/286CAF/FFF?text=Showreel"
+      6:
+        url: "https://2050today.org/wp-content/uploads/2020/07/Video-Placeholder.mp4?_=6"
+        poster: "https://placehold.co/896x504/286CAF/FFF?text=Showreel"
+      7:
+        url: "https://2050today.org/wp-content/uploads/2020/07/Video-Placeholder.mp4?_=6"
+        poster: "https://placehold.co/896x504/286CAF/FFF?text=Showreel"
+      8:
+        url: "https://2050today.org/wp-content/uploads/2020/07/Video-Placeholder.mp4?_=6"
+        poster: "https://placehold.co/896x504/286CAF/FFF?text=Showreel"
