@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.io.IOException;
+import java.util.Map;
+
 @PreAuthorize("hasRole('ADMIN')")
 @Controller("adminPageController")
 @RequestMapping("/admin/pages")
@@ -27,8 +30,10 @@ public class PageController
     }
 
     @GetMapping("/edit/{name}")
-    public String edit(@PathVariable String name, Model model)
+    public String edit(@PathVariable String name, Model model) throws IOException
     {
+        Map<String, Object> page = pageService.findByName(name);
+        model.addAttribute("page", page);
         model.addAttribute("pageName", name);
         return "admin/pages/edit";
     }

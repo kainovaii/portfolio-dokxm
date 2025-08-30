@@ -2,44 +2,49 @@ package fr.kainovaii.portfolio.service;
 
 
 import fr.kainovaii.portfolio.model.Page;
-import fr.kainovaii.portfolio.model.Post;
-import fr.kainovaii.portfolio.repository.PageRepository;
-import fr.kainovaii.portfolio.repository.PostRepository;
+import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
+import org.yaml.snakeyaml.Yaml;
 
-import java.util.List;
-import java.util.Optional;
+import java.io.*;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class PageService
 {
-    private final PageRepository pageRepository;
-
-    public PageService(PageRepository pageRepository) {
-        this.pageRepository = pageRepository;
+    public PageService()
+    {
+        YamlPropertiesFactoryBean loadConfiguration = new YamlPropertiesFactoryBean();
     }
 
-    public List<Page> findAll() {
-        return pageRepository.findAll();
+    public List<String> findAll()
+    {
+        File folder = new File("./pages"); // ou la racine du jar
+        if (!folder.exists()) return Collections.emptyList();
+
+        return Arrays.stream(Objects.requireNonNull(folder.listFiles()))
+                .filter(f -> f.getName().endsWith(".yml"))
+                .map(f -> f.getName().replace(".yml", ""))
+                .collect(Collectors.toList());
     }
 
-    public Optional<Page> findById(Long id) {
-        return pageRepository.findById(id);
+    public Map<String, Object> findByName(String name) throws IOException
+    {
+        Yaml yaml = new Yaml();
+        String baseDir = System.getProperty("user.dir");
+        File file = new File(baseDir, "pages/" + name + ".yml");
+        if (!file.exists()) {
+            throw new FileNotFoundException("Le fichier " + file.getAbsolutePath() + " n'existe pas");
+        }
+        try (InputStream in = new FileInputStream(file)) {
+            return yaml.load(in);
+        }
     }
 
-    public Optional<Page> findBySlug(String title) {
-        return pageRepository.findByTitle(title);
-    }
-
-    public Page save(Page page) {
-        return pageRepository.save(page);
-    }
-
-    public void deleteById(Long id) {
-        pageRepository.deleteById(id);
-    }
-
-    public long count() {
-        return pageRepository.count();
+    public String save(String page)
+    {
+        return "";
     }
 }

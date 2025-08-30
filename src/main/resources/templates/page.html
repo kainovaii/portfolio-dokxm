@@ -1,9 +1,149 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/front}">
-<head><title layout:fragment="title">Home</title></head>
+<head><title layout:fragment="title" th:utext="${page.name}"></title></head>
 <body class="bg-dark-secondary">
 <main layout:fragment="content">
-    <div class="bg-dark-secondary pb-[50px]" th:utext="${page}"></div>
+    <div th:each="compEntry : ${page.components}">
+        <div th:with="comp=${compEntry.value}">
+            <!-- Hero -->
+            <div th:if="${comp.type == 'hero'}">
+                <section id="top" class="relative">
+                    <div class="min-h-screen flex flex-col justify-center items-center pt-20 relative z-10">
+                        <div class="absolute inset-0">
+                            <img th:src="@{/images/hero-primary.jpg}"
+                                 alt="Hero Background"
+                                 class="w-full h-full object-cover opacity-60">
+                            <div class="absolute inset-0 bg-black opacity-85"></div>
+                        </div>
+                        <div class="text-center max-w-7xl px-6 animate-on-scroll">
+                            <h1 class="text-6xl md:text-8xl text-white font-bold mb-6 leading-tight"><span th:text="${comp.title}">default-content</span></h1>
+                            <p class="text-2xl md:text-3xl text-text-gray mb-8 font-light"><span th:text="${comp.subtitle}">default-content</span></p>
+                            <p class="text-lg text-text-gray max-w-2xl mx-auto mb-12 leading-relaxed"><span th:text="${comp.description}">default-content</span></p>
+
+                            <a th:each="button : ${comp.buttons}" th:href="${button.value.url}" th:if="${button.value.style == 1 && comp.button == true}" class="bg-gradient-to-r from-accent-orange to-accent-yellow text-dark mx-2 px-8 py-4 rounded-lg font-semibold text-lg hover:scale-105 transition-all duration-300 animate-glow">
+                                <span th:text="${button.value.text}">default-content</span>
+                            </a>
+                            <a th:each="button : ${comp.buttons}" th:href="${button.value.url}" th:if="${button.value.style == 2 && comp.button == true}" class="border-2 border-accent-orange text-accent-orange px-8 py-4 mx-2 rounded-lg font-semibold text-lg hover:bg-accent-orange hover:text-dark transition-all duration-300">
+                                <span th:text="${button.value.text}">default-content</span>
+                            </a>
+
+                            <br><br><br><br>
+                            <br><br><br><br>
+                        </div>
+                    </div>
+                    <svg class="absolute bottom-0 left-0 w-full mt-10 z-[50]" style="pointer-events: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                        <path fill="#111827" fill-opacity="1" d="M0,192L60,202.7C120,213,240,235,360,245.3C480,256,600,256,720,234.7C840,213,960,171,1080,170.7C1200,171,1320,213,1380,234.7L1440,256L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+                    </svg>
+                </section>
+            </div>
+            <!-- Video -->
+            <div th:if="${comp.type == 'video'}">
+                <section id="showreel" class="py-24 bg-dark-secondary">
+                    <div class="max-w-7xl mx-auto px-6">
+                        <div class="text-center mb-16 animate-on-scroll">
+                            <h2 class="text-5xl font-bold text-white mb-4"><span th:text="${comp.title}">default-content</span></h2>
+                            <p class="text-xl text-text-gray max-w-2xl mx-auto"><span th:text="${comp.subtitle}">default-content</span></p>
+                        </div>
+                        <div class="max-w-4xl mx-auto animate-on-scroll">
+                            <div class="video-card" x-data="videoPlayer()">
+                                <div class="relative">
+                                    <video
+                                            x-ref="video"
+                                            @click="togglePlay"
+                                            class="w-full rounded-lg"
+                                            th:poster="${comp.video_poster}"
+                                    >
+                                        <source th:src="${comp.video_url}" type="video/mp4">
+                                    </video>
+                                    <div
+                                            class="play-button relative z-10"
+                                            :class="{'opacity-0 pointer-events-none': isPlaying, 'opacity-100 pointer-events-auto': !isPlaying}"
+                                            @click.stop="play"
+                                    >
+                                        <div class="play-icon"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- Cards type 1 -->
+            <div th:if="${comp.type == 'row_cards_1'}">
+                <section id="service" class="py-24 bg-dark-secondary">
+                    <div class="max-w-6xl mx-auto px-6">
+                        <div class="text-center mb-16 animate-on-scroll">
+                            <h2 class="text-5xl text-white font-bold mb-4"><span th:text="${comp.title}">default-content</span></h2>
+                            <p class="text-xl text-text-gray max-w-2xl mx-auto"><span th:text="${comp.subtitle}">default-content</span></p>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <div th:each="cardEntry : ${comp.cards}" class="bg-dark-secondary rounded-2xl p-8 text-center hover:bg-dark-card transition-all duration-300 animate-on-scroll">
+                                <div class="w-16 h-16 bg-gradient-to-r from-accent-orange to-accent-yellow rounded-xl flex items-center justify-center text-2xl mx-auto mb-6">
+                                    <span th:text="${cardEntry.value.icon}">default-content</span>
+                                </div>
+                                <h3 class="text-xl text-white font-semibold mb-4"><span th:text="${cardEntry.value.title}">default-content</span></h3>
+                                <p class="text-text-gray leading-relaxed"><span th:text="${cardEntry.value.description}">default-content</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- Cards type 2 -->
+            <div th:if="${comp.type == 'row_cards_2'}">
+                <section id="contact" class="py-24 bg-dark-secondary">
+                    <div class="max-w-4xl mx-auto px-6 text-center">
+                        <div class="animate-on-scroll">
+                            <h2 class="text-5xl text-white font-bold mb-6"><span th:text="${comp.title}">default-content</span></h2>
+                            <p class="text-xl text-text-gray mb-12 max-w-2xl mx-auto"><span th:text="${comp.title}">default-content</span></p>
+                            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                                <div th:each="cardEntry : ${comp.cards}" class="bg-dark-card rounded-xl p-6">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-accent-orange to-accent-yellow rounded-xl flex items-center justify-center text-xl mx-auto mb-4">
+                                        <span th:text="${cardEntry.value.icon}">default-content</span>
+                                    </div>
+                                    <h3 class="font-semibold text-white  mb-2"><span th:text="${cardEntry.value.title}">default-content</span></h3>
+                                    <a class="text-accent-orange hover:underline"><span th:text="${cardEntry.value.description}">default-content</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- Cards type 2 -->
+            <div th:if="${comp.type == 'row_video'}">
+                <section id="projects" class="py-24">
+                    <div class="max-w-7xl mx-auto text-center px-6">
+                        <h2 class="text-5xl font-bold mb-6 text-gradient"><span th:text="${comp.title}">default-content</span></h2>
+                        <p class="text-xl text-text-gray mb-12 max-w-2xl mx-auto"><span th:text="${comp.subtitle}">default-content</span></p>
+                        <div class="reel-grid">
+                            <div th:each="videoCard : ${comp.videos}" class="video-card" x-data="videoPlayer()">
+                                <div class="relative">
+                                    <video
+                                            x-ref="video"
+                                            @click="togglePlay"
+                                            class="w-full rounded-lg"
+                                            th:poster="${videoCard.value.poster}"
+                                    >
+                                        <source th:src="${videoCard.value.url}" type="video/mp4">
+                                    </video>
+                                    <div
+                                            class="play-button relative z-10"
+                                            :class="{'opacity-0 pointer-events-none': isPlaying, 'opacity-100 pointer-events-auto': !isPlaying}"
+                                            @click.stop="play"
+                                    >
+                                        <div class="play-icon"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+
+        </div>
+    </div>
 </main>
 </body>
 </html>

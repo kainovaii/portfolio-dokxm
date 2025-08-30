@@ -1,0 +1,61 @@
+name: "Home"
+components:
+  hero:
+    status: enable
+    type: "hero"
+    title: "Théo Jary"
+    subtitle: "Monteur Vidéo & Créateur de Contenu"
+    description: "Passionné par la création audiovisuelle, je transforme vos idées en histoires captivantes à travers le montage, les effets visuels et la narration cinématographique."
+    button: true
+    buttons:
+      one:
+        text: "Voir mon Showreel"
+        style: 1
+        url: "#showreel"
+      two:
+        text: "Découvrir mes projets"
+        style: 2
+        url: "/projects"
+  video:
+    status: enable
+    type: "video"
+    title: "Showreel"
+    subtitle: "Une sélection de mes meilleurs travaux en 2024"
+    video_url: "https://2050today.org/wp-content/uploads/2020/07/Video-Placeholder.mp4?_=6"
+    video_poster: "https://placehold.co/896x504/286CAF/FFF?text=Showreel"
+  row_cards:
+    status: enable
+    type: "row_cards_1"
+    title: "Services"
+    subtitle: "Des solutions complètes pour tous vos besoins audiovisuels"
+    cards:
+      one:
+        icon: "✂️"
+        title: "Montage Vidéo"
+        description: "Montage professionnel pour tous types de contenus : clips, courts-métrages, publicités, vlogs."
+      two:
+        icon: "🎨"
+        title: "Effets Visuels"
+        description: "Création d'effets visuels sur-mesure, motion graphics et animations pour sublimer vos projets."
+      tree:
+        icon: "🎵"
+        title: "Post-Production Audio"
+        description: "Mixage audio, sound design et synchronisation pour une expérience sonore immersive."
+  row_cards2:
+    status: enable
+    type: "row_cards_2"
+    title: "Collaborons Ensemble"
+    subtitle: "Vous avez un projet vidéo en tête ? Discutons-en et donnons vie à votre vision créative."
+    cards:
+      one:
+        icon: "📧"
+        title: "Email"
+        description: "dokxym@gmail.com"
+      two:
+        icon: "𝕏"
+        title: "X/Twitter"
+        description: "@dokxym"
+      tree:
+        icon: "🎬"
+        title: "Instagram"
+        description: "@dokxym"

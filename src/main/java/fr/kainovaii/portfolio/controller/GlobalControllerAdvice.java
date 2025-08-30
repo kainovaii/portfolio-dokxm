@@ -22,6 +22,11 @@ public class GlobalControllerAdvice
         return "BlogSpring";
     }
 
+    @ModelAttribute("homepage")
+    public String homePage() {
+        return "home";
+    }
+
     @ModelAttribute("webAccess")
     public RouteAccessChecker webAccess() {
         return webAccess;
