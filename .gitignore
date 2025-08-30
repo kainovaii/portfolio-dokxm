@@ -39,4 +39,4 @@ tests/
 ### Mac OS ###
 .DS_Store
 database.db
-pages/
+/pages/

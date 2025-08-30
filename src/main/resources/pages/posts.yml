@@ -1,0 +1,7 @@
+name: "Posts"
+components:
+  projects:
+    status: enable
+    type: "row_posts"
+    title: "Posts"
+    subtitle: "Forsitan posse nusquam similis Romae et propria perstringam quoniam."
