@@ -46,13 +46,16 @@ if [ "$TYPE" ]; then
         git push -u origin main
         echo "⚡️ Task complete"
     fi
-        if [ "$TYPE" = "RUN" ]; then
+    if [ "$TYPE" = "RUN" ]; then
         echo "⚡️ Starting APP...."
         java -jar target/Portfolio-1.0.jar
         pause
+    fi
+    if [ "$TYPE" = "BUILD" ]; then
+        echo "⚡️ Starting building app...."
+        mvn clean package
     fi
 else
     echo "⚡️ Please enter deploy type"
     ./deploy.sh
 fi
-

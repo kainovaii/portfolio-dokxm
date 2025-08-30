@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/front}">
-<head><title layout:fragment="title" th:utext="${page.name}"></title></head>
+<head><title layout:fragment="title" th:text="(${page.name} + ' | ' + ${siteName})"></title></head>
 <body class="bg-dark-secondary">
 <main layout:fragment="content">
     <div th:each="compEntry : ${page.components}">
@@ -110,7 +110,7 @@
                     </div>
                 </section>
             </div>
-            <!-- Cards type 2 -->
+            <!-- Row videos -->
             <div th:if="${comp.type == 'row_video'}">
                 <section id="projects" class="py-24">
                     <div class="max-w-7xl mx-auto text-center px-6">
@@ -140,8 +140,6 @@
                     </div>
                 </section>
             </div>
-
-
         </div>
     </div>
 </main>
