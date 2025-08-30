@@ -19,6 +19,7 @@ public class PageController
     @GetMapping("/{name}")
     public String getPage(@PathVariable String name, Model model) throws IOException
     {
+        if (name.equals("favicon.ico")) return "redirect:/";
         Map<String, Object> page = pageService.findByName(name);
         model.addAttribute("page", page);
         return "page";
