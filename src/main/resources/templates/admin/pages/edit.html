@@ -10,7 +10,7 @@
                            class="nav-link text-capitalize"
                            data-bs-toggle="tab"
                            th:classappend="${iterStat.index == 0} ? ' active'">
-                            <span th:text="${compEntry.value.type}">default-content</span>
+                            <span th:text="${compEntry.value.type + ' (' + compEntry.key + ')'  }">default-content</span>
                         </a>
                     </li>
                 </ul>
@@ -141,6 +141,53 @@
                                            th:value="${compEntry.value.video_poster}">
                                 </div>
                             </div>
+                            <div class="row" th:if="${compEntry.value.type == 'row_video'}">
+                                <!-- Status -->
+                                <div class="col-md-12 mb-3">
+                                    <div class="form-label">Status</div>
+                                    <select class="form-select" name="status">
+                                        <option th:selected="${compEntry.value['status'] == 'enable'}" value="enable">Enable</option>
+                                        <option th:selected="${compEntry.value['status'] == 'disabled'}" value="disabled">Disabled</option>
+                                    </select>
+                                </div>
+
+                                <!-- Title -->
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Title</label>
+                                    <input type="text" class="form-control" name="title"
+                                           th:value="${compEntry.value['title']} ?: ''">
+                                </div>
+
+                                <!-- Subtitle -->
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Subtitle</label>
+                                    <input type="text" class="form-control" name="subtitle"
+                                           th:value="${compEntry.value['subtitle']} ?: ''">
+                                </div>
+
+                                <!-- Cards -->
+                                <div class="col-md-12 mb-3">
+                                    <h5>Videos</h5>
+                                    <div th:each="cardEntry : ${compEntry.value['videos']}">
+                                        <div class="card mb-3 p-3 border rounded">
+                                            <h6 th:text="'Video: ' + ${cardEntry.key}"></h6>
+
+                                            <!-- Title -->
+                                            <div class="mb-2">
+                                                <label class="form-label">Url</label>
+                                                <input type="text" class="form-control" th:name="'cards[' + ${cardEntry.key} + '].url'" th:value="${cardEntry.value['url']} ?: ''">
+                                            </div>
+
+                                            <!-- Description -->
+                                            <div class="mb-2">
+                                                <label class="form-label">Poster</label>
+                                                <input class="form-control" rows="3"  th:name="'cards[' + ${cardEntry.key} + '].poster'" th:value="${cardEntry.value['poster']} ?: ''">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="col-md-2 mb-3">
                                 <button type="submit" class="btn btn-primary w-100">Save</button>
                             </div>

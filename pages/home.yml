@@ -16,14 +16,14 @@ components:
         text: "Découvrir mes projets"
         style: 2
         url: "/projects"
-  video:
+  showreel:
     status: enable
     type: "video"
     title: "Showreel"
     subtitle: "Une sélection de mes meilleurs travaux en 2024"
     video_url: "https://2050today.org/wp-content/uploads/2020/07/Video-Placeholder.mp4?_=6"
     video_poster: "https://placehold.co/896x504/286CAF/FFF?text=Showreel"
-  row_cards:
+  services:
     status: enable
     type: "row_cards_1"
     title: "Services"
@@ -41,7 +41,7 @@ components:
         icon: "🎵"
         title: "Post-Production Audio"
         description: "Mixage audio, sound design et synchronisation pour une expérience sonore immersive."
-  row_cards2:
+  contact:
     status: enable
     type: "row_cards_2"
     title: "Collaborons Ensemble"

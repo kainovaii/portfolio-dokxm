@@ -1,6 +1,6 @@
 name: "Projects"
 components:
-  row_video:
+  projects:
     status: enable
     type: "row_video"
     title: "Mes Projets"
