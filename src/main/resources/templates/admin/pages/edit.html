@@ -2,6 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/admin}">
 <body>
     <div layout:fragment="content">
+        <div class="col-md-12">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <span>La modification des composants est temporairement désactivée.</span>
+            </div>
+        </div>
         <div class="card mt-3">
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs" data-bs-toggle="tabs">
@@ -189,7 +194,7 @@
                             </div>
 
                             <div class="col-md-2 mb-3">
-                                <button type="submit" class="btn btn-primary w-100">Save</button>
+                                <button disabled type="submit" class="btn btn-primary w-100">Save</button>
                             </div>
                         </form>
                     </div>

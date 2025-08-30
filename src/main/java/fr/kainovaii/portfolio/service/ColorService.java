@@ -9,8 +9,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-public class ColorService {
-
+public class ColorService
+{
     @Autowired
     private ColorRepository colorRepository;
 
