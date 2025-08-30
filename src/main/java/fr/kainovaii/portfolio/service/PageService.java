@@ -35,9 +35,11 @@ public class PageService
         Yaml yaml = new Yaml();
         String baseDir = System.getProperty("user.dir");
         File file = new File(baseDir, "pages/" + name + ".yml");
+
         if (!file.exists()) {
-            throw new FileNotFoundException("Le fichier " + file.getAbsolutePath() + " n'existe pas");
+            return null; // on laisse le contrôleur décider -> 404
         }
+
         try (InputStream in = new FileInputStream(file)) {
             return yaml.load(in);
         }

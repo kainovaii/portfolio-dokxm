@@ -140,6 +140,55 @@
                     </div>
                 </section>
             </div>
+
+            <div th:if="${comp.type == 'row_posts'}">
+                <section id="posts" class="py-24">
+                    <div class="max-w-7xl mx-auto px-6">
+                        <h2 class="text-5xl font-bold text-center mb-6 text-gradient"><span th:text="${comp.title}">default-content</span></h2>
+                        <p class="text-xl text-text-gray text-center mb-12 max-w-2xl mx-auto"><span th:text="${comp.subtitle}">default-content</span></p>
+                        <div class="reel-grid">
+                            <a th:each="post : ${allPosts}" th:href="${'/posts/' + post.slug}" class="group rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden cursor-pointer" style="background-color: var(--color-dark-card);">
+                                <div class="aspect-video relative overflow-hidden" style="background: linear-gradient(135deg, var(--color-accent-orange), var(--color-accent-yellow));">
+                                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <svg class="w-12 h-12 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="p-6">
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <!--
+                                        <span class="px-3 py-1 text-xs font-medium rounded-full" style="background-color: var(--color-accent-orange); color: white;">
+                                            Technology
+                                        </span>
+                                        -->
+                                    </div>
+                                    <h3 class="text-xl font-bold text-white mb-3 group-hover:transition-colors duration-300" style="group-hover:color: var(--color-accent-yellow);" th:text="${post.title}">
+                                        default-content
+                                    </h3>
+                                    <!--
+                                    <p class="text-sm leading-relaxed mb-4" style="color: var(--color-text-gray);">
+                                        Learn how to create robust, scalable APIs using GraphQL and Node.js, with practical examples and best practices.
+                                    </p>
+                                    -->
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-semibold" style="background: linear-gradient(135deg, var(--color-accent-orange), var(--color-accent-yellow));">
+                                                U
+                                            </div>
+                                            <span class="text-white text-sm font-medium">User</span>
+                                        </div>
+                                        <span class="text-sm" style="color: var(--color-text-gray);">
+                                            <time th:text="${post.createdAt}"></time>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
 </main>
