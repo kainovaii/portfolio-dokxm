@@ -1,6 +1,6 @@
 # Portfolio Dokxm
 
-Application Java Spring pour le portfolio.
+Application Java Spring portfolio.
 
 ## 🚀 Prérequis
 
