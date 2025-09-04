@@ -2,6 +2,7 @@ package fr.kainovaii.portfolio.controller.admin;
 
 import fr.kainovaii.portfolio.service.PageService;
 import fr.kainovaii.portfolio.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -36,6 +37,19 @@ public class PageController
         model.addAttribute("page", page);
         model.addAttribute("pageName", name);
         return "admin/pages/edit";
+    }
+
+    @PostMapping("/save/{name}")
+    public String save(@PathVariable String name,
+                       HttpServletRequest request,
+                       RedirectAttributes redirectAttributes) {
+        try {
+            pageService.savePage(name, request);
+            redirectAttributes.addFlashAttribute("success", "✅ Page sauvegardée !");
+        } catch (IOException e) {
+            redirectAttributes.addFlashAttribute("error", "❌ Erreur : " + e.getMessage());
+        }
+        return "redirect:/admin/pages/edit/" + name;
     }
 
     @GetMapping("/new")
