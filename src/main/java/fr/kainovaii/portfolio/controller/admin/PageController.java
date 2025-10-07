@@ -40,9 +40,7 @@ public class PageController
     }
 
     @PostMapping("/save/{name}")
-    public String save(@PathVariable String name,
-                       HttpServletRequest request,
-                       RedirectAttributes redirectAttributes) {
+    public String save(@PathVariable String name, HttpServletRequest request, RedirectAttributes redirectAttributes) {
         try {
             pageService.savePage(name, request);
             redirectAttributes.addFlashAttribute("success", "✅ Page sauvegardée !");
