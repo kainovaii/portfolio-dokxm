@@ -232,9 +232,7 @@
                         </div>
 
                         <!-- MODALS -->
-                        <div th:each="entry, iterStat : ${comp.cards}" th:id="'modal-' + ${iterStat.index}"
-                             tabindex="-1" aria-hidden="true"
-                             class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+                        <div th:each="entry, iterStat : ${comp.cards}" th:id="'modal-' + ${iterStat.index}" tabindex="-1" aria-hidden="true" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 animated">
                             <div class="relative bg-white rounded-lg shadow-lg w-full max-w-5xl max-h-full overflow-auto dark:bg-dark-card">
                                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
                                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white" th:text="${entry.value.title}"></h3>
@@ -245,14 +243,12 @@
                                         <span class="sr-only">Close modal</span>
                                     </button>
                                 </div>
-
                                 <!-- VIDEO -->
                                 <div class="p-4">
                                     <!-- Vidéo locale -->
                                     <video th:if="${entry.value.modal.video.type == 'file'}" controls class="w-full rounded-lg">
                                         <source th:src="@{${entry.value.modal.video.url}}" type="video/mp4">
                                     </video>
-
                                     <!-- Vidéo YouTube -->
                                     <div th:if="${entry.value.modal.video.type == 'youtube'}" class="relative w-full" style="padding-top:56.25%;">
                                         <iframe th:src="@{${entry.value.modal.video.url}}"
@@ -263,8 +259,6 @@
                                         </iframe>
                                     </div>
                                 </div>
-
-
                                 <!-- DESCRIPTION -->
                                 <div class="p-4 pt-0 pb-10 text-left text-white">
                                     <p th:text="${entry.value.modal.description}">Description par défaut</p>
