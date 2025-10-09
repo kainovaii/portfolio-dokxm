@@ -50,14 +50,14 @@ public class SecurityConfig
         .formLogin(form -> form
                 .loginPage("/users/login")
                 .loginProcessingUrl("/users/login")
-                .defaultSuccessUrl("/", false)
+                .defaultSuccessUrl("/admin", false)
                 .failureUrl("/users/login?error=true")
                 .permitAll()
         )
         .logout(logout -> logout
                 .logoutUrl("/users/logout")
                 .logoutRequestMatcher(new AntPathRequestMatcher("/users/logout", "GET"))
-                .logoutSuccessUrl("/users/login")
+                .logoutSuccessUrl("/")
                 .permitAll()
         );
         return http.build();

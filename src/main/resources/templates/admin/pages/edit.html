@@ -361,10 +361,15 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label class="form-label">Type de vidéo (youtube, local, etc.)</label>
-                                        <input type="text" class="form-control"
-                                               th:name="'components[' + ${compEntry.key} + '][cards][' + ${cardEntry.key} + '][modal][video][type]'"
-                                               th:value="${cardEntry.value.modal.video.type}">
+                                        <label class="form-label">Type de vidéo</label>
+                                        <select class="form-select"
+                                                th:name="'components[' + ${compEntry.key} + '][cards][' + ${cardEntry.key} + '][modal][video][type]'"
+                                                th:value="${cardEntry.value.modal.video.type}">
+                                            <option th:value="youtube" th:selected="${cardEntry.value.modal.video.type == 'youtube'}">YouTube</option>
+                                            <option th:value="local" th:selected="${cardEntry.value.modal.video.type == 'local'}">Local</option>
+                                            <option th:value="vimeo" th:selected="${cardEntry.value.modal.video.type == 'vimeo'}">Vimeo</option>
+                                            <option th:value="none" th:selected="${cardEntry.value.modal.video.type == 'none'}">Aucune</option>
+                                        </select>
                                     </div>
 
                                     <div class="mb-3">
