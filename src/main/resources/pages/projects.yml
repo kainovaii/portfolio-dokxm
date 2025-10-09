@@ -12,5 +12,13 @@ components:
         modal:
           video:
             type: youtube
-            url: "https://www.youtube.com/embed/M6SsZovFEsk?autoplay=1"
+            url: "M6SsZovFEsk"
+          description: "Dum haec in oriente aguntur, Arelate hiemem agens Constantius post theatralis ludos atque circenses ambitioso editos apparatu diem sextum idus Octobres, qui imperii eius annum tricensimum terminabat, insolentiae pondera gravius librans, siquid dubium deferebatur aut falsum, pro liquido accipiens et conperto, inter alia excarnificatum Gerontium Magnentianae comitem partis exulari maerore multavit."
+      2:
+        poster: "https://placehold.co/896x504/286CAF/FFF?text=Local+File"
+        title: "Ad haec permittunt innumeram eventu"
+        modal:
+          video:
+            type: file
+            url: "/uploads/videos/sample.mp4"
           description: "Dum haec in oriente aguntur, Arelate hiemem agens Constantius post theatralis ludos atque circenses ambitioso editos apparatu diem sextum idus Octobres, qui imperii eius annum tricensimum terminabat, insolentiae pondera gravius librans, siquid dubium deferebatur aut falsum, pro liquido accipiens et conperto, inter alia excarnificatum Gerontium Magnentianae comitem partis exulari maerore multavit."

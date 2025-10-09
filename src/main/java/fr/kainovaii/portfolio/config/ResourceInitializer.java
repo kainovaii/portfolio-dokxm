@@ -12,7 +12,8 @@ public class ResourceInitializer
 {
     private final String[] defaultFiles = {
             "pages/home.yml",
-            "pages/projects.yml"
+            "pages/projects.yml",
+            "pages/posts.yml"
     };
 
     @PostConstruct
