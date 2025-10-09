@@ -91,48 +91,52 @@
                             </div>
 
                             <!-- BOUTONS: on évite #lists/... => on traite explicitement 'one' et 'two' -->
-                            <div th:if="${compEntry.value['buttons'] != null}">
+                            <div th:if="${compEntry.value['buttons'] != null}" class="">
                                 <h5>Boutons</h5>
-
-                                <!-- Bouton ONE -->
-                                <div class="card mb-3" th:with="b=${compEntry.value['buttons']['one']}">
-                                    <div class="card-header">Bouton 1</div>
-                                    <div class="card-body">
-                                        <label>Texte</label>
-                                        <input type="text" class="form-control"
-                                               th:name="'components[' + ${compEntry.key} + '][buttons][one][text]'"
-                                               th:value="${b != null ? b['text'] : ''}"/>
-                                        <label>Style</label>
-                                        <select class="form-select"
-                                                th:name="'components[' + ${compEntry.key} + '][buttons][one][style]'">
-                                            <option value="1" th:selected="${b != null ? b['style'] == 1 : false}">Style 1</option>
-                                            <option value="2" th:selected="${b != null ? b['style'] == 2 : false}">Style 2</option>
-                                        </select>
-                                        <label>URL</label>
-                                        <input type="text" class="form-control"
-                                               th:name="'components[' + ${compEntry.key} + '][buttons][one][url]'"
-                                               th:value="${b != null ? b['url'] : ''}"/>
+                                <div class="row">
+                                    <!-- Bouton ONE -->
+                                    <div class="col">
+                                        <div class="card mb-3" th:with="b=${compEntry.value['buttons']['one']}">
+                                            <div class="card-header">Bouton 1</div>
+                                            <div class="card-body">
+                                                <label>Texte</label>
+                                                <input type="text" class="form-control"
+                                                       th:name="'components[' + ${compEntry.key} + '][buttons][one][text]'"
+                                                       th:value="${b != null ? b['text'] : ''}"/>
+                                                <label>Style</label>
+                                                <select class="form-select"
+                                                        th:name="'components[' + ${compEntry.key} + '][buttons][one][style]'">
+                                                    <option value="1" th:selected="${b != null ? b['style'] == 1 : false}">Style 1</option>
+                                                    <option value="2" th:selected="${b != null ? b['style'] == 2 : false}">Style 2</option>
+                                                </select>
+                                                <label>URL</label>
+                                                <input type="text" class="form-control"
+                                                       th:name="'components[' + ${compEntry.key} + '][buttons][one][url]'"
+                                                       th:value="${b != null ? b['url'] : ''}"/>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-
-                                <!-- Bouton TWO -->
-                                <div class="card mb-3" th:with="b=${compEntry.value['buttons']['two']}">
-                                    <div class="card-header">Bouton 2</div>
-                                    <div class="card-body">
-                                        <label>Texte</label>
-                                        <input type="text" class="form-control"
-                                               th:name="'components[' + ${compEntry.key} + '][buttons][two][text]'"
-                                               th:value="${b != null ? b['text'] : ''}"/>
-                                        <label>Style</label>
-                                        <select class="form-select"
-                                                th:name="'components[' + ${compEntry.key} + '][buttons][two][style]'">
-                                            <option value="1" th:selected="${b != null ? b['style'] == 1 : false}">Style 1</option>
-                                            <option value="2" th:selected="${b != null ? b['style'] == 2 : false}">Style 2</option>
-                                        </select>
-                                        <label>URL</label>
-                                        <input type="text" class="form-control"
-                                               th:name="'components[' + ${compEntry.key} + '][buttons][two][url]'"
-                                               th:value="${b != null ? b['url'] : ''}"/>
+                                    <!-- Bouton TWO -->
+                                    <div class="col">
+                                        <div class="card mb-3" th:with="b=${compEntry.value['buttons']['two']}">
+                                            <div class="card-header">Bouton 2</div>
+                                            <div class="card-body">
+                                                <label>Texte</label>
+                                                <input type="text" class="form-control"
+                                                       th:name="'components[' + ${compEntry.key} + '][buttons][two][text]'"
+                                                       th:value="${b != null ? b['text'] : ''}"/>
+                                                <label>Style</label>
+                                                <select class="form-select"
+                                                        th:name="'components[' + ${compEntry.key} + '][buttons][two][style]'">
+                                                    <option value="1" th:selected="${b != null ? b['style'] == 1 : false}">Style 1</option>
+                                                    <option value="2" th:selected="${b != null ? b['style'] == 2 : false}">Style 2</option>
+                                                </select>
+                                                <label>URL</label>
+                                                <input type="text" class="form-control"
+                                                       th:name="'components[' + ${compEntry.key} + '][buttons][two][url]'"
+                                                       th:value="${b != null ? b['url'] : ''}"/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -205,8 +209,8 @@
                                 </div>
                             </div>
 
-                            <div class="row" th:if="${compEntry.value['cards'] != null}" th:each="cardEntry : ${compEntry.value['cards'].entrySet()}">
-                                <div class="col-md-4 mb-3">
+                            <div class="row">
+                                <div class="col-md-4" th:if="${compEntry.value['cards'] != null}" th:each="cardEntry : ${compEntry.value['cards'].entrySet()}">
                                     <div class="card">
                                         <div class="card-header" th:text="'Carte: ' + ${cardEntry.key}">Carte</div>
                                         <div class="card-body" th:with="c=${cardEntry.value}">
