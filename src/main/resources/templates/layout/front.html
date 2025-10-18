@@ -55,25 +55,6 @@
     <script src="/assets/js/main.js"></script>
     <script src="/assets/js/player.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
-    <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const filePlayer = document.querySelector('#player-file');
-            const youtubePlayer = document.querySelector('#player-youtube');
 
-            if (filePlayer) {
-                new Plyr(filePlayer);
-                console.log('🎬 Plyr (fichier local) initialisé');
-            }
-
-            if (youtubePlayer) {
-                new Plyr(youtubePlayer, {
-                    youtube: { noCookie: true },
-                    controls: ['play', 'progress', 'mute', 'volume', 'settings', 'fullscreen']
-                });
-                console.log('📺 Plyr (YouTube) initialisé');
-            }
-        });
-    </script>
 </body>
 </html>

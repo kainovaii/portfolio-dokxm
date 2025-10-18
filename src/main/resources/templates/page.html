@@ -209,6 +209,25 @@
 
                         <!-- MODALS -->
                         <div th:each="entry, iterStat : ${comp.cards}" th:id="'modal-' + ${iterStat.index}" tabindex="-1" aria-hidden="true" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 animated">
+                            <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', () => {
+                                    // Initialise tous les players vidéo locaux
+                                    document.querySelectorAll('[id^="player-file-"]').forEach(player => {
+                                        new Plyr(player);
+                                        console.log('🎬 Plyr (fichier local) initialisé pour', player.id);
+                                    });
+
+                                    // Initialise tous les players YouTube
+                                    document.querySelectorAll('[id^="player-youtube-"]').forEach(player => {
+                                        new Plyr(player, {
+                                            youtube: { noCookie: true },
+                                            controls: ['play', 'progress', 'mute', 'volume', 'settings', 'fullscreen']
+                                        });
+                                        console.log('📺 Plyr (YouTube) initialisé pour', player.id);
+                                    });
+                                });
+                            </script>
                             <div class="relative bg-white rounded-lg shadow-lg w-full max-w-5xl max-h-full overflow-auto dark:bg-dark-card">
                                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
                                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white" th:text="${entry.value.title}"></h3>
@@ -222,12 +241,12 @@
                                 <!-- VIDEO -->
                                 <div class="p-4">
                                     <!-- Vidéo locale -->
-                                    <video id="player-file" th:if="${entry.value.modal.video.type == 'file'}" controls class="w-full rounded-lg">
+                                    <video th:id="'player-file-' + ${iterStat.index}" th:if="${entry.value.modal.video.type == 'file'}" controls class="w-full rounded-lg">
                                         <source th:src="@{${entry.value.modal.video.url}}" type="video/mp4">
                                     </video>
                                     <!-- Vidéo YouTube -->
                                     <div th:if="${entry.value.modal.video.type == 'youtube'}" class="relative w-full">
-                                        <div id="player-youtube"
+                                        <div th:id="'player-youtube-' + ${iterStat.index}"
                                              th:if="${entry.value.modal.video.type == 'youtube'}"
                                              data-plyr-provider="youtube"
                                              th:attr="data-plyr-embed-id=${entry.value.modal.video.url}"

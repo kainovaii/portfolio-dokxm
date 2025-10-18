@@ -4,7 +4,6 @@
       layout:decorate="~{layout/admin}">
 <body>
 <div layout:fragment="content">
-
     <!-- ALERTS -->
     <div class="col-md-12">
         <div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${success}">
@@ -16,7 +15,6 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
     </div>
-
     <div class="card mt-3">
         <!-- TABS -->
         <div class="card-header">
@@ -33,7 +31,6 @@
                 </li>
             </ul>
         </div>
-
         <!-- TAB CONTENT -->
         <div class="card-body">
             <div class="tab-content">
@@ -41,11 +38,8 @@
                      th:id="'tabs-' + ${iterStat.index}"
                      class="tab-pane fade"
                      th:classappend="${iterStat.index == 0} ? ' show active'">
-
                     <form th:action="@{'/admin/pages/save/' + ${pageName}}" method="post">
-
                         <input type="hidden" th:name="'component_key'" th:value="${compEntry.key}"/>
-
                         <!-- HERO -->
                         <div th:if="${compEntry.value['type'] == 'hero'}">
                             <h4>Configuration Hero</h4>
@@ -141,7 +135,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <!-- VIDEO -->
                         <div th:if="${compEntry.value['type'] == 'video'}">
                             <h4>Configuration Vidéo</h4>
@@ -181,7 +174,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <!-- ROW CARDS -->
                         <div th:if="${compEntry.value['type'] == 'row_cards_1' or compEntry.value['type'] == 'row_cards_2'}">
                             <h4>Configuration Cards</h4>
@@ -231,7 +223,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <!-- CARD_MODAL (ex: Projects) -->
                         <div th:if="${compEntry.value['type'] == 'card_modal' or compEntry.value['type'] == 'projects' }">
                             <h4>Configuration Card Modal</h4>
@@ -308,21 +299,17 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <!-- BOUTON DE SAUVEGARDE -->
                         <div class="mt-4">
                             <button type="submit" class="btn btn-primary btn-lg">
                                 💾 Sauvegarder ce composant
                             </button>
                         </div>
-
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 </body>
 </html>
